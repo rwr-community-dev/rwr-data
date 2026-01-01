@@ -1,14 +1,16 @@
-from extractors.helpers import save_json
+from extractors.utils import save_json
 from extractors import OUTPUT_DIR
-from pathlib import Path
 from lxml import etree
 import requests
+import logging
+
+logger = logging.getLogger('moderators')
 
 
 def fetch_moderators() -> None:
     # Admins -----------------------------
 
-    print('Retrieving admin list')
+    logger.info('Retrieving admin list')
 
     response = requests.get('https://rwr.runningwithrifles.com/shared/admins.xml', verify=False)
 
@@ -22,7 +24,7 @@ def fetch_moderators() -> None:
 
     # Moderators -------------------------
 
-    print('Retrieving moderator list')
+    logger.info('Retrieving moderator list')
 
     response = requests.get('https://rwr.runningwithrifles.com/shared/moderators.xml', verify=False)
 
@@ -36,10 +38,10 @@ def fetch_moderators() -> None:
 
     # ------------------------------------
 
-    filename = OUTPUT_DIR / Path('moderators.json')
+    filename = OUTPUT_DIR / 'moderators.json'
 
-    print(f'Saving to {filename}')
+    logger.info(f'Saving to {filename}')
 
     save_json(filename, mods)
 
-    print('Done')
+    logger.info('Done')
