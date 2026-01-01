@@ -39,9 +39,13 @@ def parse_map_path(map_path: Path) -> Tuple[Optional[str], Optional[str]]:
     return server_type, map_id
 
 
-def parse_map_data( map_infos: str):
+def parse_map_data(map_infos: str):
     map_infos = map_infos.replace('\r', '').replace('\n', '')
-    entries = [entry.strip().rstrip(';') for entry in filter(None, map_infos.strip().split(';')) if not entry.lstrip().startswith('#')]
+
+    entries = [
+        entry.strip().rstrip(';') for entry in filter(None, map_infos.strip().split(';')) if not entry.lstrip().startswith('#')
+    ]
+
     key_value_pairs = [[key_value_pair.strip() for key_value_pair in entry.split('=', maxsplit=1)] for entry in entries]
 
     return {key_value_pair[0]: key_value_pair[1] for key_value_pair in key_value_pairs}
