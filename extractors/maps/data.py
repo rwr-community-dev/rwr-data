@@ -1,5 +1,6 @@
 from extractors.utils import get_directories, parse_map_path, parse_map_data, save_json
-from extractors import INVALID_MAPS, INVALID_GAME_TYPES, OUTPUT_DIR, STATIC_DIR
+from extractors import INVALID_GAME_TYPES, OUTPUT_DIR, STATIC_DIR, WIKI_BASE_URL
+from extractors.maps import INVALID_MAPS, WIKI_PAGES
 from collections import OrderedDict
 from pathlib import Path
 from lxml import etree
@@ -54,8 +55,11 @@ def extract_maps_data(steam_dir: Path) -> None:
         if server_type not in data:
             data[server_type] = OrderedDict()
 
+        wiki_page = WIKI_PAGES.get(server_type, {}).get(map_id)
+
         data[server_type][map_id] = OrderedDict([
             ('name', map_infos['name'].replace('Pacific: ', '').replace('Edelweiss: ', '').replace('WW2: ', '').title().replace('\'S', '\'s')),
+            ('wikiUrl', (WIKI_BASE_URL + wiki_page) if wiki_page else None),
             # ('hasMinimap', os.path.isfile(os.path.join(app.config['MINIMAPS_IMAGES_DIR'], server_type, map_id + '.png'))),
             ('hasPreview', (STATIC_DIR / 'maps' / 'images' / 'previews' / server_type / f'{map_id}.png').exists())
         ])

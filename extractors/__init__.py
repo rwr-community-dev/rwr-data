@@ -12,7 +12,7 @@ VALID_GAME_TYPES = ['vanilla', 'pacific', 'edelweiss']
 
 INVALID_GAME_TYPES = ['teddy_hunt', 'minimodes', 'man_vs_world']
 
-INVALID_MAPS = ['lobby']
+WIKI_BASE_URL = 'https://runningwithrifles.fandom.com/wiki/'
 
 
 def create_archive() -> None:
