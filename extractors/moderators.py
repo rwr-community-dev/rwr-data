@@ -10,7 +10,7 @@ logger = logging.getLogger('moderators')
 def fetch_moderators() -> None:
     # Admins -----------------------------
 
-    logger.info('Retrieving admin list')
+    logger.info('Retrieving admin list...')
 
     response = requests.get('https://rwr.runningwithrifles.com/shared/admins.xml', verify=False)
 
@@ -24,7 +24,7 @@ def fetch_moderators() -> None:
 
     # Moderators -------------------------
 
-    logger.info('Retrieving moderator list')
+    logger.info('Retrieving moderator list..')
 
     response = requests.get('https://rwr.runningwithrifles.com/shared/moderators.xml', verify=False)
 
@@ -40,8 +40,6 @@ def fetch_moderators() -> None:
 
     filename = OUTPUT_DIR / 'moderators.json'
 
-    logger.info(f'Saving to {filename}')
+    logger.info(f'Saving to {filename}...')
 
     save_json(filename, mods)
-
-    logger.info('Done')

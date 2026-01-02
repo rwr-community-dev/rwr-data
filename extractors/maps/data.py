@@ -10,6 +10,8 @@ logger = logging.getLogger('maps:data')
 
 
 def extract_maps_data(steam_dir: Path) -> None:
+    logger.info('Extracting maps data...')
+
     game_dir, workshop_dir, packages_dir = get_directories(steam_dir)
 
     maps_paths = []
@@ -63,8 +65,6 @@ def extract_maps_data(steam_dir: Path) -> None:
 
     filename = OUTPUT_DIR / 'maps' / 'data.json'
 
-    logger.info(f'Saving to {filename}')
+    logger.info(f'Saving to {filename}...')
 
     save_json(filename, data)
-
-    logger.info('Done')

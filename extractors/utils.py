@@ -1,6 +1,8 @@
 from typing import Dict, Union, List, Tuple, Optional
-from extractors import RWR_STEAM_APP_ID
+from extractors import RWR_STEAM_APP_ID, OUTPUT_DIR
 from pathlib import Path
+import tarfile
+import logging
 import json
 import re
 
@@ -8,7 +10,7 @@ _map_path_regex = re.compile(r'[/\\](?P<server_type>.[^/]+)[/\\]maps[/\\](?P<map
 
 
 def save_json(file: Path, data: Union[Dict, List]) -> None:
-    file.parent.mkdir(exist_ok=True)
+    file.parent.mkdir(parents=True, exist_ok=True)
 
     with file.open('w', encoding='utf-8') as f:
         json.dump(data, f)
@@ -39,7 +41,7 @@ def parse_map_path(map_path: Path) -> Tuple[Optional[str], Optional[str]]:
     return server_type, map_id
 
 
-def parse_map_data(map_infos: str):
+def parse_map_data(map_infos: str) -> Dict:
     map_infos = map_infos.replace('\r', '').replace('\n', '')
 
     entries = [
@@ -49,3 +51,14 @@ def parse_map_data(map_infos: str):
     key_value_pairs = [[key_value_pair.strip() for key_value_pair in entry.split('=', maxsplit=1)] for entry in entries]
 
     return {key_value_pair[0]: key_value_pair[1] for key_value_pair in key_value_pairs}
+
+
+def create_archive() -> None:
+    filename = OUTPUT_DIR / 'rwr-data.tar.gz'
+
+    logging.info(f'Compressing to {filename}...')
+
+    with tarfile.open(filename, mode='w:gz') as f:
+        f.add(OUTPUT_DIR / 'maps', 'maps')
+        # f.add(OUTPUT_DIR / 'ranks', 'ranks')
+        f.add(OUTPUT_DIR / 'moderators.json', 'moderators.json')
