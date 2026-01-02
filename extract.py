@@ -87,7 +87,7 @@ def main() -> None:
 
     if args.target == 'all':
         extract_maps_data(args.steam_dir)
-        copy_static_files('maps/images/previews')
+        copy_static_files('')
         extract_ranks_data(args.steam_dir)
         fetch_moderators()
 
