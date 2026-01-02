@@ -1,8 +1,8 @@
+from extractors import OUTPUT_DIR, create_archive, copy_static_files
+from extractors.ranks.data import extract_ranks_data
 from extractors.moderators import fetch_moderators
 from extractors.maps.data import extract_maps_data
-from extractors.utils import create_archive
 from argparse import ArgumentParser
-from extractors import OUTPUT_DIR
 from shutil import rmtree
 from pathlib import Path
 import logging
@@ -87,6 +87,8 @@ def main() -> None:
 
     if args.target == 'all':
         extract_maps_data(args.steam_dir)
+        copy_static_files('maps/images/previews')
+        extract_ranks_data(args.steam_dir)
         fetch_moderators()
 
         if args.archive:
@@ -95,9 +97,12 @@ def main() -> None:
         if args.subtarget == 'data':
             extract_maps_data(args.steam_dir)
         elif args.subtarget == 'images':
-            pass
+            copy_static_files('maps/images/previews')
     elif args.target == 'ranks':
-        pass
+        if args.subtarget == 'data':
+            extract_ranks_data(args.steam_dir)
+        elif args.subtarget == 'images':
+            pass
     elif args.target == 'moderators':
         fetch_moderators()
 

@@ -1,8 +1,6 @@
 from typing import Dict, Union, List, Tuple, Optional
-from extractors import RWR_STEAM_APP_ID, OUTPUT_DIR
+from extractors import RWR_STEAM_APP_ID
 from pathlib import Path
-import tarfile
-import logging
 import json
 import re
 
@@ -51,14 +49,3 @@ def parse_map_data(map_infos: str) -> Dict:
     key_value_pairs = [[key_value_pair.strip() for key_value_pair in entry.split('=', maxsplit=1)] for entry in entries]
 
     return {key_value_pair[0]: key_value_pair[1] for key_value_pair in key_value_pairs}
-
-
-def create_archive() -> None:
-    filename = OUTPUT_DIR / 'rwr-data.tar.gz'
-
-    logging.info(f'Compressing to {filename}...')
-
-    with tarfile.open(filename, mode='w:gz') as f:
-        f.add(OUTPUT_DIR / 'maps', 'maps')
-        # f.add(OUTPUT_DIR / 'ranks', 'ranks')
-        f.add(OUTPUT_DIR / 'moderators.json', 'moderators.json')

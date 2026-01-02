@@ -5,7 +5,6 @@ from pathlib import Path
 from lxml import etree
 import logging
 
-
 logger = logging.getLogger('maps:data')
 
 
