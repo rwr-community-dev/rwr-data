@@ -1,5 +1,5 @@
 from extractors.utils import get_directories, parse_map_path, parse_map_data, save_json
-from extractors import INVALID_MAPS, INVALID_GAME_TYPES, OUTPUT_DIR
+from extractors import INVALID_MAPS, INVALID_GAME_TYPES, OUTPUT_DIR, STATIC_DIR
 from collections import OrderedDict
 from pathlib import Path
 from lxml import etree
@@ -29,7 +29,7 @@ def extract_maps_data(steam_dir: Path) -> None:
         server_type, map_id = parse_map_path(map_path.parent)
 
         if not map_id or map_id in INVALID_MAPS or server_type in INVALID_GAME_TYPES:
-            logger.warning('Invalid map ID ({}) or server type ({})'.format(map_id, server_type))
+            logger.warning(f'Invalid map ID ({map_id}) or server type ({server_type})')
 
             continue
 
@@ -56,8 +56,8 @@ def extract_maps_data(steam_dir: Path) -> None:
 
         data[server_type][map_id] = OrderedDict([
             ('name', map_infos['name'].replace('Pacific: ', '').replace('Edelweiss: ', '').replace('WW2: ', '').title().replace('\'S', '\'s')),
-            # ('has_minimap', os.path.isfile(os.path.join(app.config['MINIMAPS_IMAGES_DIR'], server_type, map_id + '.png'))),
-            # ('has_preview', os.path.isfile(os.path.join(app.config['MAPS_PREVIEW_IMAGES_DIR'], server_type, map_id + '.png')))
+            # ('hasMinimap', os.path.isfile(os.path.join(app.config['MINIMAPS_IMAGES_DIR'], server_type, map_id + '.png'))),
+            ('hasPreview', (STATIC_DIR / 'maps' / 'images' / 'previews' / server_type / f'{map_id}.png').exists())
         ])
 
     # ------------------------------------
