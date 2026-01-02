@@ -5,5 +5,5 @@ game files.
 
 ## Credits
 
-  - All RUNNING WITH RIFLES assets (images, RWR logo, game data) © Osumia Games
+  - All RUNNING WITH RIFLES assets (images, game data) © Osumia Games
   - Map previews comes from the [official RWR wiki](https://runningwithrifles.fandom.com/wiki/Maps)
