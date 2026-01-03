@@ -1,5 +1,5 @@
 from extractors.utils import get_directories, parse_map_path, parse_map_data, save_json
-from extractors import OUTPUT_DIR, STATIC_DIR, WIKI_BASE_URL, VALID_PACKAGES
+from extractors import OUTPUT_DIR,  WIKI_BASE_URL, VALID_PACKAGES
 from extractors.maps import INVALID_MAPS, WIKI_PAGES
 from collections import OrderedDict
 from pathlib import Path
@@ -60,8 +60,6 @@ def extract_maps_data(steam_dir: Path) -> None:
         data[package_id][map_id] = OrderedDict([
             ('name', map_infos['name'].replace('Pacific: ', '').replace('Edelweiss: ', '').replace('WW2: ', '').title().replace('\'S', '\'s')),
             ('wikiUrl', (WIKI_BASE_URL + wiki_page) if wiki_page else None),
-            # ('hasImage', (STATIC_DIR / 'maps' / 'images' / package_id / f'{map_id}.png').exists()),
-            ('hasPreview', (STATIC_DIR / 'maps' / 'images' / 'previews' / package_id / f'{map_id}.png').exists())
         ])
 
     # ------------------------------------
