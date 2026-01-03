@@ -52,12 +52,12 @@ def main() -> None:
 
     maps_subtarget_arg_parser = maps_arg_parser.add_subparsers(dest='subtarget', required=True)
 
-    maps_subtarget_arg_parser.add_parser('data', help='Extract maps metadata')
-    maps_subtarget_arg_parser.add_parser('images', help='Extract maps images')
+    maps_subtarget_arg_parser.add_parser('data', help='Extract map metadata')
+    maps_subtarget_arg_parser.add_parser('images', help='Extract map images')
 
     # Ranks ------------------------------
 
-    ranks_arg_parser = target_arg_parser.add_parser('ranks', help='Extract ranks-related data')
+    ranks_arg_parser = target_arg_parser.add_parser('ranks', help='Extract rank-related data')
 
     ranks_arg_parser.add_argument(
         'steam_dir',
@@ -67,8 +67,8 @@ def main() -> None:
 
     ranks_subtarget_arg_parser = ranks_arg_parser.add_subparsers(dest='subtarget', required=True)
 
-    ranks_subtarget_arg_parser.add_parser('data', help='Extract ranks metadata')
-    ranks_subtarget_arg_parser.add_parser('images', help='Extract ranks insignia')
+    ranks_subtarget_arg_parser.add_parser('data', help='Extract rank metadata')
+    ranks_subtarget_arg_parser.add_parser('insignias', help='Extract rank insignias')
 
     # Moderators -------------------------
 
