@@ -30,7 +30,7 @@ Get notified about updates by either subscribing to the release events of this r
     - Previews (PNG, if available). In-game representative screenshot. Mostly sourced from the [official wiki](https://runningwithrifles.fandom.com/wiki/Maps)
   - Ranks
     - Metadata (JSON)
-      - Name
+      - Rank name
       - Required XP
     - Insignias (PNG)
 
@@ -67,6 +67,13 @@ python extract.py all {steamdir} -a
 
 Where `{steamdir}` is the absolute path to the Steam root directory. `-a` (or `--archive`) creates the release archive
 from the created files.
+
+The code was partially extracted from the defunct [RWRS](https://github.com/EpocDotFr/rwrs) project.
+
+### Adding map preview
+
+> [!TODO]
+> Document.
 
 ## Credits
 
