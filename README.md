@@ -18,7 +18,7 @@ Head to the [releases](https://github.com/rwr-community-dev/rwr-data/releases) p
 ## Updates
 
 Get notified about updates by either subscribing to the release events of this repo ("Watch" button), or by using the
-[releases Atom feed](https://github.com/EpocDotFr/mindustry-campaign-stats/releases.atom).
+[releases Atom feed](https://github.com/rwr-community-dev/mindustry-campaign-stats/releases.atom).
 
 ## Available data
 
