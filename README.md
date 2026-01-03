@@ -9,11 +9,11 @@ Data aren't made available into this repo itself. They are provided in the `rwr-
 
 ### Latest version
 
-[Direct link](/releases/latest/download/rwr-data.tar.gz)
+[Direct link](https://github.com/rwr-community-dev/rwr-data/releases/latest/download/rwr-data.tar.gz)
 
 ### Older version
 
-Head to the [releases](/releases) page and download the desired `rwr-data.tar.gz` file.
+Head to the [releases](https://github.com/rwr-community-dev/rwr-data/releases) page and download the desired `rwr-data.tar.gz` file.
 
 ## Available data
 
