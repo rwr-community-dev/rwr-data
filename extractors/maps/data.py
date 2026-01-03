@@ -1,5 +1,5 @@
 from extractors.utils import get_directories, parse_map_path, parse_map_data, save_json
-from extractors import INVALID_GAME_TYPES, OUTPUT_DIR, STATIC_DIR, WIKI_BASE_URL
+from extractors import OUTPUT_DIR, STATIC_DIR, WIKI_BASE_URL, VALID_PACKAGES
 from extractors.maps import INVALID_MAPS, WIKI_PAGES
 from collections import OrderedDict
 from pathlib import Path
@@ -27,10 +27,10 @@ def extract_maps_data(steam_dir: Path) -> None:
     data = OrderedDict()
 
     for map_path in maps_paths:
-        server_type, map_id = parse_map_path(map_path.parent)
+        package_id, map_id = parse_map_path(map_path.parent)
 
-        if not map_id or map_id in INVALID_MAPS or server_type in INVALID_GAME_TYPES:
-            logger.warning(f'Invalid map ID ({map_id}) or server type ({server_type})')
+        if not map_id or map_id in INVALID_MAPS or package_id not in VALID_PACKAGES:
+            logger.warning(f'Invalid map ID ({map_id}) or server type ({package_id})')
 
             continue
 
@@ -39,29 +39,29 @@ def extract_maps_data(steam_dir: Path) -> None:
         map_infos = map_xml.findtext('//svg:rect[@inkscape:label=\'#general\']/svg:desc', namespaces={'svg': 'http://www.w3.org/2000/svg', 'inkscape': 'http://www.inkscape.org/namespaces/inkscape'})
 
         if not map_infos:
-            logger.warning('No general map info found')
+            logger.error('No general map info found')
 
             continue
 
         map_infos = parse_map_data(map_infos)
 
         if 'name' not in map_infos:
-            logger.warning('Map name not found')
+            logger.error('Map name not found')
 
             continue
 
-        logger.info(server_type + ':' + map_id)
+        logger.info(f'{package_id}:{map_id}')
 
-        if server_type not in data:
-            data[server_type] = OrderedDict()
+        if package_id not in data:
+            data[package_id] = OrderedDict()
 
-        wiki_page = WIKI_PAGES.get(server_type, {}).get(map_id)
+        wiki_page = WIKI_PAGES.get(package_id, {}).get(map_id)
 
-        data[server_type][map_id] = OrderedDict([
+        data[package_id][map_id] = OrderedDict([
             ('name', map_infos['name'].replace('Pacific: ', '').replace('Edelweiss: ', '').replace('WW2: ', '').title().replace('\'S', '\'s')),
             ('wikiUrl', (WIKI_BASE_URL + wiki_page) if wiki_page else None),
-            # ('hasMinimap', os.path.isfile(os.path.join(app.config['MINIMAPS_IMAGES_DIR'], server_type, map_id + '.png'))),
-            ('hasPreview', (STATIC_DIR / 'maps' / 'images' / 'previews' / server_type / f'{map_id}.png').exists())
+            # ('hasImage', (STATIC_DIR / 'maps' / 'images' / package_id / f'{map_id}.png').exists()),
+            ('hasPreview', (STATIC_DIR / 'maps' / 'images' / 'previews' / package_id / f'{map_id}.png').exists())
         ])
 
     # ------------------------------------

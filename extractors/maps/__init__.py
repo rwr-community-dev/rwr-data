@@ -21,9 +21,6 @@ WIKI_PAGES = {
         'map20': 'Elk_Island',
         'map21': 'Route_666',
     },
-    'pvp': {
-        'pvp1': 'Islet_of_Eflen',
-    },
     'vanilla.winter': {
         'map4': 'Fridge_Valley',
         'map8_2': 'Tropical_Blizzard',
@@ -33,6 +30,9 @@ WIKI_PAGES = {
         'map9': 'Black_Gold_Estuary',
         'map10': 'Railroad_Gap',
         'map6': 'Rattlesnake_Crescent',
+    },
+    'pvp': {
+        'pvp1': 'Islet_of_Eflen',
     },
     'pacific': {
         'island1': 'Guadalcanal',

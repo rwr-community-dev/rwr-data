@@ -4,7 +4,7 @@ from pathlib import Path
 import json
 import re
 
-_map_path_regex = re.compile(r'[/\\](?P<server_type>.[^/]+)[/\\]maps[/\\](?P<map_id>.+)$')
+_map_path_regex = re.compile(r'[/\\](?P<package_id>.[^/]+)[/\\]maps[/\\](?P<map_id>.+)$')
 
 
 def save_json(file: Path, data: Union[Dict, List]) -> None:
@@ -25,7 +25,7 @@ def get_directories(steam_dir: Path) -> Tuple[Path, Path, Path]:
 
 
 def parse_map_path(map_path: Path) -> Tuple[Optional[str], Optional[str]]:
-    server_type = None
+    package_id = None
     map_id = None
 
     parsed = _map_path_regex.search(str(map_path))
@@ -33,10 +33,10 @@ def parse_map_path(map_path: Path) -> Tuple[Optional[str], Optional[str]]:
     if parsed:
         parsed = parsed.groupdict()
 
-        server_type = parsed['server_type']
+        package_id = parsed['package_id']
         map_id = parsed['map_id']
 
-    return server_type, map_id
+    return package_id, map_id
 
 
 def parse_map_data(map_infos: str) -> Dict:
