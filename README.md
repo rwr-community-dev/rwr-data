@@ -15,6 +15,11 @@ Data aren't made available into this repo itself. They are provided in the `rwr-
 
 Head to the [releases](https://github.com/rwr-community-dev/rwr-data/releases) page and download the desired `rwr-data.tar.gz` file.
 
+## Updates
+
+Get notified about updates by either subscribing to the release events of this repo ("Watch" button), or by using the
+[releases Atom feed](https://github.com/EpocDotFr/mindustry-campaign-stats/releases.atom).
+
 ## Available data
 
   - Maps
