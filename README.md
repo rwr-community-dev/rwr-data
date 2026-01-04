@@ -7,13 +7,9 @@ game.
 
 Data aren't made available into this repo itself. They are provided in the `rwr-data.tar.gz` file of each release.
 
-### Latest version
-
-[Direct link](https://github.com/rwr-community-dev/rwr-data/releases/latest/download/rwr-data.tar.gz)
-
-### Older version
-
-Head to the [releases](https://github.com/rwr-community-dev/rwr-data/releases) page and download the desired `rwr-data.tar.gz` file.
+| Latest version                                                                                                                                                                  | Older version                                                                                                              |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| [![GitHub Release](https://img.shields.io/github/v/release/rwr-community-dev/rwr-data)](https://github.com/rwr-community-dev/rwr-data/releases/latest/download/rwr-data.tar.gz) | Download the desired `rwr-data.tar.gz` file on the [releases](https://github.com/rwr-community-dev/rwr-data/releases) page |
 
 ## Updates
 
@@ -26,12 +22,31 @@ Get notified about updates by either subscribing to the release events of this r
     - Metadata (JSON)
       - Map name
       - Link to the official wiki page (if available)
-    - Images (PNG). The map displayed when pressing <kbd>TAB</kbd> in-game
-    - Previews (PNG, if available). In-game representative screenshot. Mostly sourced from the [official wiki](https://runningwithrifles.fandom.com/wiki/Maps)
+      - **Annotated extract**:
+
+        ```json5
+        {
+          "vanilla": { // Package (mod) name
+            "map2": { // Map ID
+              "name": "Keepsake Bay", // Map name (mandatory)
+              "wikiUrl": "https://runningwithrifles.fandom.com/wiki/Keepsake_Bay" // Official wiki page (optional)
+            }
+          }
+        }
+        ```
+        - Images (PNG). The map displayed when pressing <kbd>TAB</kbd> in-game
+        - Previews (PNG, if available). In-game representative screenshot. Mostly sourced from the [official wiki](https://runningwithrifles.fandom.com/wiki/Maps)
   - Ranks
     - Metadata (JSON)
       - Rank name
       - Required XP
+      - **Annotated extract**:
+
+        ```json5
+        {
+          // TODO
+        }
+        ```
     - Insignias (PNG)
 
 ## Development
@@ -70,10 +85,22 @@ from the created files.
 
 The code was partially extracted from the defunct [RWRS](https://github.com/EpocDotFr/rwrs) project.
 
-### Adding map preview
+### Adding a map preview
 
 > [!NOTE]
 > TODO: document.
+
+### Creating a release
+
+  1. Run the `python extract.py all {steamdir} -a` command (read above)
+  2. Create a GitHub release following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+  3. The name of the release must follows this format: `{year}.{n}`, where `{year}` is the current year and `{n}` the
+     last value of that year plus one
+  4. Upload the resulting `data/rwr-data.tar.gz` file into the release
+  5. Publish the release
+
+> [!NOTE]
+> The Python code itself is not versioned. What is versioned is the resulting data.
 
 ## Credits
 
