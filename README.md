@@ -26,7 +26,7 @@ Get notified about updates by either subscribing to the release events of this r
     - Metadata (JSON)
       - Map name
       - Link to the official wiki page (if available)
-    - Images (PNG). What is displayed when pressing <kbd>TAB</kbd> in-game
+    - Images (PNG). The map displayed when pressing <kbd>TAB</kbd> in-game
     - Previews (PNG, if available). In-game representative screenshot. Mostly sourced from the [official wiki](https://runningwithrifles.fandom.com/wiki/Maps)
   - Ranks
     - Metadata (JSON)
@@ -72,8 +72,8 @@ The code was partially extracted from the defunct [RWRS](https://github.com/Epoc
 
 ### Adding map preview
 
-> [!TODO]
-> Document.
+> [!NOTE]
+> TODO: document.
 
 ## Credits
 
