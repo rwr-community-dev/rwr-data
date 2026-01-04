@@ -30,8 +30,10 @@ Get notified about updates by either subscribing to the release events of this r
             "map2": { // Map ID
               "name": "Keepsake Bay", // Map name (mandatory)
               "wikiUrl": "https://runningwithrifles.fandom.com/wiki/Keepsake_Bay" // Official wiki page (optional)
-            }
-          }
+            },
+            // ...
+          },
+          // ...
         }
         ```
     - Images (PNG). The map displayed when pressing <kbd>TAB</kbd> in-game
@@ -44,10 +46,31 @@ Get notified about updates by either subscribing to the release events of this r
 
         ```json5
         {
-          // TODO
+          "vanilla": [ // Package (mod) name
+            { // Position in the array defines the rank's level. Here it's rank 0
+              "name": "Private", // Rank name
+              "xp": 0 // Required amount of XP
+            },
+            {
+              "name": "Private 1st Class",
+              "xp": 500
+            },
+            // ...
+          ],
+          // ...
         }
         ```
-    - Insignias (PNG)
+    - Insignias (PNG). What is displayed in-game when hovering soldiers with your cursor
+  - Moderators on official servers (JSON)
+    - **Annotated extract**:
+
+      ```json5
+      [
+        "ahnold",
+        "jackmayol",
+        // ...
+      ]
+      ```
 
 ## Development
 
