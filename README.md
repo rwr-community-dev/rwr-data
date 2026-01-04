@@ -34,8 +34,8 @@ Get notified about updates by either subscribing to the release events of this r
           }
         }
         ```
-        - Images (PNG). The map displayed when pressing <kbd>TAB</kbd> in-game
-        - Previews (PNG, if available). In-game representative screenshot. Mostly sourced from the [official wiki](https://runningwithrifles.fandom.com/wiki/Maps)
+    - Images (PNG). The map displayed when pressing <kbd>TAB</kbd> in-game
+    - Previews (PNG, if available). In-game representative screenshot. Mostly sourced from the [official wiki](https://runningwithrifles.fandom.com/wiki/Maps)
   - Ranks
     - Metadata (JSON)
       - Rank name
