@@ -1,5 +1,5 @@
-from extractors.utils import save_json
-from extractors import OUTPUT_DIR
+from builders.utils import save_json
+from builders import OUTPUT_DIR
 from lxml import etree
 import requests
 import logging

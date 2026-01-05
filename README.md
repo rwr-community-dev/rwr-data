@@ -1,7 +1,7 @@
 # RWR Data
 
-Useful, machine-readable data related to the [RUNNING WITH RIFLES](https://store.steampowered.com/app/270150/RUNNING_WITH_RIFLES/)
-game.
+Useful data related to the [RUNNING WITH RIFLES](https://store.steampowered.com/app/270150/RUNNING_WITH_RIFLES/)
+game, gathered from several sources.
 
 ## Download
 
@@ -13,8 +13,10 @@ Data aren't made available into this repo itself. They are provided in the `rwr-
 
 ## Updates
 
-Get notified about updates by either subscribing to the release events of this repo ("Watch" button), or by using the
-[releases Atom feed](https://github.com/rwr-community-dev/mindustry-campaign-stats/releases.atom).
+Get notified about updates by subscribing either to:
+
+  - The release events of this repo ("Watch" button); or
+  - The [releases Atom feed](https://github.com/rwr-community-dev/mindustry-campaign-stats/releases.atom)
 
 ## Available data
 
@@ -51,7 +53,7 @@ Get notified about updates by either subscribing to the release events of this r
               "name": "Private", // Rank name
               "xp": 0 // Required amount of XP
             },
-            {
+            { // Rank 1
               "name": "Private 1st Class",
               "xp": 500
             },
@@ -66,7 +68,7 @@ Get notified about updates by either subscribing to the release events of this r
 
       ```json5
       [
-        "ahnold",
+        "ahnold", // In-game username
         "jackmayol",
         // ...
       ]
@@ -92,7 +94,7 @@ Clone this repo, and then the usual `pip install -r requirements.txt`.
 Everything happens through a CLI. You can read about all the available commands using:
 
 ```shell
-python extract.py -h
+python build.py -h
 ```
 
 You can use the `-h` (or `--help`) option for each of the subcommands as well.
@@ -100,7 +102,7 @@ You can use the `-h` (or `--help`) option for each of the subcommands as well.
 The command that will probably be most used is the one that updates all the data at once:
 
 ```shell
-python extract.py all {steamdir} -a 
+python build.py all {steamdir} -a 
 ```
 
 Where `{steamdir}` is the absolute path to the Steam root directory. `-a` (or `--archive`) creates the release archive
@@ -115,10 +117,10 @@ The code was partially extracted from the defunct [RWRS](https://github.com/Epoc
 
 ### Creating a release
 
-  1. Run the `python extract.py all {steamdir} -a` command (read above)
+  1. Run the `python build.py all {steamdir} -a` command (read above)
   2. Create a GitHub release following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
   3. The name of the release must follows this format: `{year}.{n}`, where `{year}` is the current year and `{n}` the
-     last value of that year plus one
+     last value of that year plus one, or `1` if it's the first release of the said year
   4. Upload the resulting `data/rwr-data.tar.gz` file into the release
   5. Publish the release
 

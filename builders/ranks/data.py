@@ -1,4 +1,4 @@
-from extractors.utils import get_directories
+from builders.utils import get_directories
 from collections import OrderedDict
 from pathlib import Path
 import logging
@@ -6,8 +6,8 @@ import logging
 logger = logging.getLogger('ranks:data')
 
 
-def extract_ranks_data(steam_dir: Path) -> None:
-    logger.info('Extracting ranks data...')
+def build_ranks_data(steam_dir: Path) -> None:
+    logger.info('Building ranks data...')
 
     game_dir, workshop_dir, packages_dir = get_directories(steam_dir)
 

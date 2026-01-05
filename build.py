@@ -1,7 +1,7 @@
-from extractors import OUTPUT_DIR, create_archive, copy_static_files
-from extractors.ranks.data import extract_ranks_data
-from extractors.moderators import fetch_moderators
-from extractors.maps.data import extract_maps_data
+from builders import OUTPUT_DIR, create_archive, copy_static_files
+from builders.ranks.data import build_ranks_data
+from builders.moderators import fetch_moderators
+from builders.maps.data import build_maps_data
 from argparse import ArgumentParser
 from shutil import rmtree
 from pathlib import Path
@@ -19,14 +19,14 @@ def main() -> None:
     )
 
     arg_parser = ArgumentParser(
-        description='Extract data from the RUNNING WITH RIFLES game files'
+        description='Build data related to the RUNNING WITH RIFLES gathered from several sources'
     )
 
     target_arg_parser = arg_parser.add_subparsers(dest='target', required=True)
 
     # All --------------------------------
 
-    all_arg_parser = target_arg_parser.add_parser('all', help='Extract everything')
+    all_arg_parser = target_arg_parser.add_parser('all', help='Build everything')
 
     all_arg_parser.add_argument(
         'steam_dir',
@@ -42,7 +42,7 @@ def main() -> None:
 
     # Maps -------------------------------
 
-    maps_arg_parser = target_arg_parser.add_parser('maps', help='Extract maps-related data')
+    maps_arg_parser = target_arg_parser.add_parser('maps', help='Build maps-related data')
 
     maps_arg_parser.add_argument(
         'steam_dir',
@@ -52,12 +52,12 @@ def main() -> None:
 
     maps_subtarget_arg_parser = maps_arg_parser.add_subparsers(dest='subtarget', required=True)
 
-    maps_subtarget_arg_parser.add_parser('data', help='Extract map metadata')
-    maps_subtarget_arg_parser.add_parser('images', help='Extract map images')
+    maps_subtarget_arg_parser.add_parser('data', help='Build map metadata')
+    maps_subtarget_arg_parser.add_parser('images', help='Build map images')
 
     # Ranks ------------------------------
 
-    ranks_arg_parser = target_arg_parser.add_parser('ranks', help='Extract rank-related data')
+    ranks_arg_parser = target_arg_parser.add_parser('ranks', help='Build rank-related data')
 
     ranks_arg_parser.add_argument(
         'steam_dir',
@@ -67,12 +67,12 @@ def main() -> None:
 
     ranks_subtarget_arg_parser = ranks_arg_parser.add_subparsers(dest='subtarget', required=True)
 
-    ranks_subtarget_arg_parser.add_parser('data', help='Extract rank metadata')
-    ranks_subtarget_arg_parser.add_parser('insignias', help='Extract rank insignias')
+    ranks_subtarget_arg_parser.add_parser('data', help='Build rank metadata')
+    ranks_subtarget_arg_parser.add_parser('insignias', help='Build rank insignias')
 
     # Moderators -------------------------
 
-    target_arg_parser.add_parser('moderators', help='Extract in-game moderators on official servers')
+    target_arg_parser.add_parser('moderators', help='Build in-game moderators on official servers')
 
     # ------------------------------------
 
@@ -86,21 +86,21 @@ def main() -> None:
         pass
 
     if args.target == 'all':
-        extract_maps_data(args.steam_dir)
+        build_maps_data(args.steam_dir)
         copy_static_files('')
-        extract_ranks_data(args.steam_dir)
+        build_ranks_data(args.steam_dir)
         fetch_moderators()
 
         if args.archive:
             create_archive()
     elif args.target == 'maps':
         if args.subtarget == 'data':
-            extract_maps_data(args.steam_dir)
+            build_maps_data(args.steam_dir)
         elif args.subtarget == 'images':
             copy_static_files('maps/images/previews')
     elif args.target == 'ranks':
         if args.subtarget == 'data':
-            extract_ranks_data(args.steam_dir)
+            build_ranks_data(args.steam_dir)
         elif args.subtarget == 'images':
             pass
     elif args.target == 'moderators':

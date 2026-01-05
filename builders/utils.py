@@ -1,5 +1,5 @@
 from typing import Dict, Union, List, Tuple, Optional
-from extractors import RWR_STEAM_APP_ID
+from builders import RWR_STEAM_APP_ID
 from pathlib import Path
 import json
 import re

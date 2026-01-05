@@ -1,6 +1,6 @@
-from extractors.utils import get_directories, parse_map_path, parse_map_data, save_json
-from extractors import OUTPUT_DIR,  WIKI_BASE_URL, VALID_PACKAGES
-from extractors.maps import INVALID_MAPS, WIKI_PAGES
+from builders.utils import get_directories, parse_map_path, parse_map_data, save_json
+from builders import OUTPUT_DIR,  WIKI_BASE_URL, VALID_PACKAGES
+from builders.maps import INVALID_MAPS, WIKI_PAGES
 from collections import OrderedDict
 from pathlib import Path
 from lxml import etree
@@ -9,8 +9,8 @@ import logging
 logger = logging.getLogger('maps:data')
 
 
-def extract_maps_data(steam_dir: Path) -> None:
-    logger.info('Extracting maps data...')
+def build_maps_data(steam_dir: Path) -> None:
+    logger.info('Building maps data...')
 
     game_dir, workshop_dir, packages_dir = get_directories(steam_dir)
 
