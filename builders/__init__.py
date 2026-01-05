@@ -19,6 +19,9 @@ WIKI_BASE_URL = 'https://runningwithrifles.fandom.com/wiki/'
 
 
 def create_archive(rev: int) -> None:
+    if rev < 1:
+        raise ValueError('revision must be greater than zero')
+
     filename = OUTPUT_DIR / f'rwr-data-{date.today().year}.{rev}.tar.gz'
 
     logging.info(f'Compressing {OUTPUT_DIR} to {filename}...')

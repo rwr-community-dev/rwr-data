@@ -55,12 +55,14 @@ def build_maps_data(steam_dir: Path) -> None:
         if package_id not in data:
             data[package_id] = OrderedDict()
 
-        wiki_page = WIKI_PAGES.get(package_id, {}).get(map_id)
-
         data[package_id][map_id] = OrderedDict([
             ('name', map_infos['name'].replace('Pacific: ', '').replace('Edelweiss: ', '').replace('WW2: ', '').title().replace('\'S', '\'s')),
-            ('wikiUrl', (WIKI_BASE_URL + wiki_page) if wiki_page else None),
         ])
+
+        wiki_page = WIKI_PAGES.get(package_id, {}).get(map_id)
+
+        if wiki_page:
+            data[package_id][map_id]['wiki_page'] = WIKI_BASE_URL + wiki_page
 
     # ------------------------------------
 
