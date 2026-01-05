@@ -10,8 +10,11 @@ STATIC_DIR = Path('static')
 RWR_STEAM_APP_ID = 270150
 
 VALID_PACKAGES = [
+    # Vanilla
     'pvp',
     'vanilla', 'vanilla.winter', 'vanilla.desert',
+
+    # WWII
     'ww2_combined', 'pacific', 'edelweiss', 'ww2_undead',
 ]
 
