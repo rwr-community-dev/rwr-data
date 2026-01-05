@@ -29,6 +29,6 @@ def create_archive() -> None:
 
 
 def copy_static_files(path: str) -> None:
-    logging.info(f'Copying static files...')
+    logging.info(f'Copying static files ({path})...')
 
     copytree(STATIC_DIR / path, OUTPUT_DIR / path, dirs_exist_ok=True)
