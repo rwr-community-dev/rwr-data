@@ -16,9 +16,13 @@ Data aren't made available into this repo itself. They are provided in the `rwr-
 Get notified about updates by subscribing either to:
 
   - The release events of this repo ("Watch" button); or
-  - The [releases Atom feed](https://github.com/rwr-community-dev/mindustry-campaign-stats/releases.atom)
+  - The [releases Atom feed](https://github.com/rwr-community-dev/rwr-data/releases.atom)
 
 ## Available data
+
+> [!IMPORTANT]
+> Only data from **official packages** (vanilla game and official DLCs) are available. Third-party packages (mods) aren't
+> planned (yet?).
 
   - Maps
     - Metadata (JSON)
