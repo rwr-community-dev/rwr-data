@@ -1,4 +1,5 @@
 from shutil import copytree
+from datetime import date
 from pathlib import Path
 import logging
 import tarfile
@@ -17,10 +18,10 @@ VALID_PACKAGES = [
 WIKI_BASE_URL = 'https://runningwithrifles.fandom.com/wiki/'
 
 
-def create_archive() -> None:
-    filename = OUTPUT_DIR / 'rwr-data.tar.gz'
+def create_archive(rev: int) -> None:
+    filename = OUTPUT_DIR / f'rwr-data-{date.today().year}.{rev}.tar.gz'
 
-    logging.info(f'Compressing to {filename}...')
+    logging.info(f'Compressing {OUTPUT_DIR} to {filename}...')
 
     with tarfile.open(filename, mode='w:gz') as f:
         f.add(OUTPUT_DIR / 'maps', 'maps')

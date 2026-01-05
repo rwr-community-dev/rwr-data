@@ -35,9 +35,9 @@ def main() -> None:
     )
 
     all_arg_parser.add_argument(
-        '-a', '--archive',
-        help='Create archive for release',
-        action='store_true'
+        '-r', '--rev',
+        help='Create release archive for the given revision',
+        type=int
     )
 
     # Maps -------------------------------
@@ -91,8 +91,8 @@ def main() -> None:
         build_ranks_data(args.steam_dir)
         fetch_moderators()
 
-        if args.archive:
-            create_archive()
+        if args.rev:
+            create_archive(args.rev)
     elif args.target == 'maps':
         if args.subtarget == 'data':
             build_maps_data(args.steam_dir)
