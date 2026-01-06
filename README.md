@@ -10,11 +10,11 @@ The code was partially extracted from the defunct [RWRS](https://github.com/Epoc
 Data aren't made available into this repo itself. They are provided in the `rwr-data-*.tar.gz` file of each
 [release](https://github.com/rwr-community-dev/rwr-data/releases).
 
-[![Latest release](https://img.shields.io/github/v/release/rwr-community-dev/rwr-data)](https://github.com/rwr-community-dev/rwr-data/releases/latest)
+Link to latest release: [![Latest release](https://img.shields.io/github/v/release/rwr-community-dev/rwr-data)](https://github.com/rwr-community-dev/rwr-data/releases/latest)
 
 ## Updates
 
-Get notified about updates by subscribing either to:
+There's no update schedule, data are updated as needed. Get notified about updates by subscribing either to:
 
   - The release events of this repo ("Watch" button); or
   - The [releases Atom feed](https://github.com/rwr-community-dev/rwr-data/releases.atom)
@@ -27,7 +27,7 @@ Get notified about updates by subscribing either to:
 
   - Maps
     - Metadata (JSON)
-      - Map name
+      - Map name. Extracted from the game's files
       - Link to the official wiki page (if available)
       - **Annotated extract**:
 
@@ -43,10 +43,10 @@ Get notified about updates by subscribing either to:
           // ...
         }
         ```
-    - Images (PNG). The map displayed when pressing <kbd>TAB</kbd> in-game
+    - Images (PNG). The map displayed when pressing <kbd>TAB</kbd> in-game. Extracted from the game's files
     - Previews (PNG, if available). In-game representative screenshot. Mostly sourced from the [official wiki](https://runningwithrifles.fandom.com/wiki/Maps)
   - Ranks
-    - Metadata (JSON)
+    - Metadata (JSON). Extracted from the game's files
       - Rank name
       - Required XP
       - **Annotated extract**:
@@ -67,8 +67,8 @@ Get notified about updates by subscribing either to:
           // ...
         }
         ```
-    - Insignias (PNG). What is displayed in-game when hovering soldiers with your cursor
-  - Moderators on official servers (JSON)
+    - Insignias (PNG). What is displayed in-game when hovering soldiers with your cursor. Extracted from the game's files
+  - Moderators on official servers (JSON). Sourced from config actually used by official servers
     - **Annotated extract**:
 
       ```json5
