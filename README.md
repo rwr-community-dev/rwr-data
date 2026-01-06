@@ -33,7 +33,7 @@ There's no update schedule, data are updated as needed. Get notified about updat
 
         ```json5
         {
-          "vanilla": { // Package name
+          "vanilla": { // Package ID
             "map2": { // Map ID
               "name": "Keepsake Bay", // Map name (mandatory)
               "wikiUrl": "https://runningwithrifles.fandom.com/wiki/Keepsake_Bay" // Official wiki page (optional)
@@ -53,7 +53,7 @@ There's no update schedule, data are updated as needed. Get notified about updat
 
         ```json5
         {
-          "vanilla": [ // Package name
+          "vanilla": [ // Faction ID (NOT the package's ID)
             { // Position in the array defines the rank's level. Here it's rank 0
               "name": "Private", // Rank name
               "xp": 0 // Required amount of XP
@@ -73,7 +73,7 @@ There's no update schedule, data are updated as needed. Get notified about updat
 
       ```json5
       [
-        "ahnold", // In-game username
+        "ahnold", // In-game username (lowercase)
         "jackmayol",
         // ...
       ]
@@ -115,11 +115,11 @@ You can use the `--help` option for each of the subcommands as well.
   2. Run the `python build.py all {steamdir} --rev {n}` command where `{steamdir}` is the absolute path to the Steam root
      directory and `{n}`) is the desired revision. The revision must be the last value of the current year plus one, or
      `1` if it's the first release of the year
-  2. Create a GitHub release following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
-  3. The name of the release must match this format: `{year}.{n}`. It must be identical to the one found in the archive's
+  3. Create a GitHub release following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+  4. The name of the release must match this format: `{year}.{n}`. It must be identical to the one found in the archive's
      name
-  4. Upload the resulting `dist/rwr-data-*.tar.gz` file into the release
-  5. Publish the release
+  5. Upload the resulting `dist/rwr-data-*.tar.gz` file into the release
+  6. Publish the release
 
 ## Credits
 
