@@ -53,7 +53,7 @@ There's no update schedule, data are updated as needed. Get notified about updat
 
         ```json5
         {
-          "vanilla": [ // Faction ID (NOT the package's ID)
+          "vanilla": [ // Faction ID (NOT the package's ID). Caution: this faction ID is NOT necessarily the one used in the game's file
             { // Position in the array defines the rank's level. Here it's rank 0
               "name": "Private", // Rank name
               "xp": 0 // Required amount of XP
