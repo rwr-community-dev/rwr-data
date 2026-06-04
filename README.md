@@ -87,7 +87,8 @@ There's no update schedule, data are updated as needed. Get notified about updat
 
 ### Prerequisites
 
-  - Python >= 3.10
+  - Python >= 3.10 (developed using 3.14)
+  - [Pipenv](https://pipenv.pypa.io/en/latest/)
   - RUNNING WITH RIFLES game with all its DLCs
 
 ### Installation
@@ -99,7 +100,7 @@ Clone this repo, and then the usual `pip install -r requirements.txt`.
 Everything happens through a CLI. You can read about all the available commands using:
 
 ```shell
-python build.py --help
+pipenv run python build.py --help
 ```
 
 You can use the `--help` option for each of the subcommands as well.
@@ -112,7 +113,7 @@ You can use the `--help` option for each of the subcommands as well.
 ### Creating a release
 
   1. Make sure your game installation is up to date (including DLCs)
-  2. Run the `python build.py all {steamdir} --rev {n}` command where `{steamdir}` is the absolute path to the Steam root
+  2. Run the `pipenv run python build.py all {steamdir} --rev {n}` command where `{steamdir}` is the absolute path to the Steam root
      directory and `{n}`) is the desired revision. The revision must be the last value of the current year plus one, or
      `1` if it's the first release of the year
   3. Create a GitHub release following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
@@ -125,3 +126,4 @@ You can use the `--help` option for each of the subcommands as well.
 
   - All RUNNING WITH RIFLES assets (images, game data) © Osumia Games
   - Map previews comes from the [official RWR wiki](https://runningwithrifles.fandom.com/wiki/Maps)
+  - Original code by [@EpocDotFr](https://github.com/EpocDotFr)
