@@ -93,7 +93,7 @@ There's no update schedule, data are updated as needed. Get notified about updat
 
 ### Installation
 
-Clone this repo, and then the usual `pip install -r requirements.txt`.
+Clone this repo, and then `pipenv install --dev`.
 
 ### Usage
 
