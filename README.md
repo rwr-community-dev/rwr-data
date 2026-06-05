@@ -173,6 +173,11 @@ into the archive upon release.
 They are located in the `static/maps/images/previews` directory. The naming follows the same convention as the map's
 images, e.g `{package}/{name}.png`.
 
+### Adding a map wiki URL
+
+This happens in the [`builders/maps/__init__.py`](builders/maps/__init__.py) file, in the `WIKI_PAGES` constant. The URL
+is automatically set in the JSON file when building the archive if one is found.
+
 ### Creating a release
 
   1. Make sure your game installation is up to date (including DLCs)
