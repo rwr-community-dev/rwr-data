@@ -100,7 +100,7 @@ Clone this repo, and then `pipenv install --dev`.
 Everything happens through a CLI. You can read about all the available commands using:
 
 ```shell
-pipenv run python build.py --help
+pipenv run build --help
 ```
 
 You can use the `--help` option for each of the subcommands as well.
@@ -113,7 +113,7 @@ You can use the `--help` option for each of the subcommands as well.
 ### Creating a release
 
   1. Make sure your game installation is up to date (including DLCs)
-  2. Run the `pipenv run python build.py all {steamdir} --rev {n}` command where `{steamdir}` is the absolute path to the Steam root
+  2. Run the `pipenv run build all {steamdir} --rev {n}` command where `{steamdir}` is the absolute path to the Steam root
      directory and `{n}`) is the desired revision. The revision must be the last value of the current year plus one, or
      `1` if it's the first release of the year
   3. Create a GitHub release following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format

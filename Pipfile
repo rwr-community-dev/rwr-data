@@ -3,6 +3,9 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[scripts]
+buiild = "python build.py"
+
 [packages]
 requests = "~=2.34.0"
 lxml = "~=6.1.0"
