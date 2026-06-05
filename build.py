@@ -12,6 +12,14 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def main() -> None:
+    def revision(rev: str) -> int:
+        rev = int(rev)
+
+        if rev < 1:
+            raise ValueError()
+
+        return rev
+
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s [%(levelname)s] %(name)s - %(message)s',
@@ -37,7 +45,7 @@ def main() -> None:
     all_arg_parser.add_argument(
         '-r', '--rev',
         help='Create release archive for the given revision',
-        type=int
+        type=revision
     )
 
     # Maps -------------------------------
