@@ -12,6 +12,11 @@ Data aren't made available into this repo itself. They are provided in the `rwr-
 
 Link to latest release: [![Latest release](https://img.shields.io/github/v/release/rwr-community-dev/rwr-data)](https://github.com/rwr-community-dev/rwr-data/releases/latest)
 
+### Automation
+
+You'd want to automate download of the latest release file. You could do so by using [this tool](https://github.com/devmatteini/dra)
+or by rolling [your own bash script](https://gist.github.com/steinwaywhw/a4cd19cda655b8249d908261a62687f8).
+
 ## Updates
 
 There's no update schedule, data are updated as needed. Get notified about updates by subscribing either to:
@@ -25,59 +30,114 @@ There's no update schedule, data are updated as needed. Get notified about updat
 > Only data from **official packages** (vanilla game and official DLCs) are available. Third-party packages (typically
 > mods) aren't planned (yet?).
 
-  - Maps
-    - Metadata (JSON)
-      - Map name. Extracted from the game's files
-      - Link to the official wiki page (if available)
-      - **Annotated extract**:
+Emojis meaning: ✅ data is available; 🚧 data is not yet available but work is in progress; 📅 data is not yet available
+but is planned to.
 
-        ```json5
-        {
-          "vanilla": { // Package ID
-            "map2": { // Map ID
-              "name": "Keepsake Bay", // Map name (mandatory)
-              "wikiUrl": "https://runningwithrifles.fandom.com/wiki/Keepsake_Bay" // Official wiki page (optional)
-            },
-            // ...
-          },
-          // ...
-        }
-        ```
-    - Images (PNG). The map displayed when pressing <kbd>TAB</kbd> in-game. Extracted from the game's files
-    - Previews (PNG, if available). In-game representative screenshot. Mostly sourced from the [official wiki](https://runningwithrifles.fandom.com/wiki/Maps)
-  - Ranks
-    - Metadata (JSON). Extracted from the game's files
-      - Rank name
-      - Required XP
-      - **Annotated extract**:
+### Maps
 
-        ```json5
-        {
-          "vanilla": [ // Faction ID (NOT the package's ID). Caution: this faction ID is NOT necessarily the one used in the game's file
-            { // Position in the array defines the rank's level. Here it's rank 0
-              "name": "Private", // Rank name
-              "xp": 0 // Required amount of XP
-            },
-            { // Rank 1
-              "name": "Private 1st Class",
-              "xp": 500
-            },
-            // ...
-          ],
-          // ...
-        }
-        ```
-    - Insignias (PNG). What is displayed in-game when hovering soldiers with your cursor. Extracted from the game's files
-  - Moderators on official servers (JSON). Sourced from config actually used by official servers
-    - **Annotated extract**:
+#### Metadata ✅
 
-      ```json5
-      [
-        "ahnold", // In-game username (lowercase)
-        "jackmayol",
-        // ...
-      ]
-      ```
+**Format**: JSON
+
+**Content**:
+
+  - Map name. Extracted from the game's files
+  - Link to the official wiki page (if available)
+
+**Location**: `maps/data.json`
+
+**Annotated extract**:
+
+```json5
+{
+  "vanilla": { // Package ID
+    "map2": { // Map ID
+      "name": "Keepsake Bay", // Map name (mandatory)
+      "wikiUrl": "https://runningwithrifles.fandom.com/wiki/Keepsake_Bay" // Official wiki page (optional)
+    },
+    // ...
+  },
+  // ...
+}
+```
+
+#### Images 📅
+
+**Format**: PNG
+
+**Content**: The map displayed when pressing <kbd>TAB</kbd> in-game. Extracted from the game's files
+
+**Location**: `maps/images/{package}/{name}.png`
+
+#### Previews ✅
+
+**Format**: PNG (if available)
+
+**Content**: In-game representative screenshot. Mostly sourced from the [official wiki](https://runningwithrifles.fandom.com/wiki/Maps)
+
+**Location**: `maps/images/previews/{package}/{name}.png`
+
+### Ranks
+
+#### Metadata 🚧
+
+**Format**: JSON
+
+**Content**:
+
+Extracted from the game's files:
+
+  - Rank name
+  - Required XP
+
+**Location**: `ranks/data.json`
+
+**Annotated extract**:
+
+```json5
+{
+  "vanilla": [ // Faction ID (NOT the package's ID). Caution: this faction ID is NOT necessarily the one used in the game's file
+    { // Position in the array defines the rank's level. Here it's rank 0
+      "name": "Private", // Rank name
+      "xp": 0 // Required amount of XP
+    },
+    { // Rank 1
+      "name": "Private 1st Class",
+      "xp": 500
+    },
+    // ...
+  ],
+  // ...
+}
+```
+
+#### Insignias 📅
+
+**Format**: PNG
+
+**Content**: What is displayed in-game when hovering soldiers with your cursor. Extracted from the game's files
+
+**Location**: `ranks/images/{faction}/{level}.png`
+
+### Moderators ✅
+
+**Format**: JSON
+
+**Content**:
+
+Moderators on official servers. Sourced from config actually used by official servers.
+
+**Location**: `moderators.json`
+
+**Annotated extract**:
+
+```json5
+[
+  "ahnold", // In-game username (lowercase)
+  "jackmayol",
+  // ...
+]
+```
 
 ## Development
 
@@ -107,8 +167,11 @@ You can use the `--help` option for each of the subcommands as well.
 
 ### Adding a map preview
 
-> [!NOTE]
-> TODO: document.
+Map previews are the only images versioned into this repo since those are user-generated content. They are simply copied
+into the archive upon release.
+
+They are located in the `static/maps/images/previews` directory. The naming follows the same convention as the map's
+images, e.g `{package}/{name}.png`.
 
 ### Creating a release
 
